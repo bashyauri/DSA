@@ -14,7 +14,7 @@ class TreeNode:
 
 
 root = TreeNode("Node", [])
-soft = TreeNode("soft", [])
+soft = TreeNode("Soft", [])
 hot = TreeNode("Hot", [])
 root.addChild(soft)
 root.addChild(hot)
