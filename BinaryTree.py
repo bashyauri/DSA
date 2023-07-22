@@ -44,18 +44,20 @@ def postOrderTraversal(root_node):
     print(root_node.value)
 
 
-def levelOrderTraversal(root_node):
-    if root_node is None:
+def levelOrderTraversal(rootNode):
+    if not rootNode:
         return
-    q = Queue()
-    q.enqueue(root_node)
-    while q.linkedList.head:
-        root = q.dequeue()
-        print(root.value.value)
-        if root.value.left:
-            q.enqueue(root.value.left)
-        if root.value.right:
-            q.enqueue(root.value.right)
+    else:
+        customQueue = Queue()
+        customQueue.enqueue(rootNode)
+        while not (customQueue.is_empty()):
+            root = customQueue.dequeue()
+            print(str(root.value.value))
+            if root.value.left is not None:
+                customQueue.enqueue(root.value.left)
+
+            if root.value.right is not None:
+                customQueue.enqueue(root.value.right)
 
 
 def search_node(root_node, node):
@@ -75,6 +77,26 @@ def search_node(root_node, node):
     return False
 
 
+def insert_node(root_node, node):
+    if root_node is None:
+        root_node = node
+    else:
+        q = Queue()
+        q.enqueue(root_node)
+        while not q.is_empty():
+            current_node = q.dequeue()
+            if current_node.value.left:
+                q.enqueue(current_node.value.left)
+            else:
+                current_node.value.left = node
+                return True
+            if current_node.value.right:
+                q.enqueue(current_node.value.right)
+            else:
+                current_node.value.right = node
+                return True
+
+
 # def search_node(node):
 #     queue = Queue()
 #     head_node = queue.linkedList.head
@@ -92,5 +114,6 @@ def search_node(root_node, node):
 #             queue.enqueue(current_node.value.right)
 #     return False
 
-
-print(search_node(treeNode, "Tea"))
+new_node = TreeNode("Coke")
+print(insert_node(treeNode, new_node))
+levelOrderTraversal(treeNode)
