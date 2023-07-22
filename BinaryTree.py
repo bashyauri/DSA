@@ -1,4 +1,4 @@
-from QueueLinkedList import Queue
+from QueueLinkedList import Queue, LinkedList
 
 
 class TreeNode:
@@ -58,4 +58,39 @@ def levelOrderTraversal(root_node):
             q.enqueue(root.value.right)
 
 
-levelOrderTraversal(treeNode)
+def search_node(root_node, node):
+    q = Queue()
+
+    if root_node is None:
+        return "Empty List"
+    q.enqueue(root_node)
+    while not q.is_empty():
+        current_node = q.dequeue()
+        if current_node.value.value == node:
+            return True
+        if current_node.value.left:
+            q.enqueue(current_node.value.left)
+        if current_node.value.right:
+            q.enqueue(current_node.value.right)
+    return False
+
+
+# def search_node(node):
+#     queue = Queue()
+#     head_node = queue.linkedList.head
+
+#     if head_node is None:
+#         return "Empty Linked List"
+#     queue.enqueue(head_node)
+#     while not queue.is_empty():
+#         current_node = queue.dequeue()
+#         if current_node.value.value == node:
+#             return True
+#         if current_node.value.left:
+#             queue.enqueue(current_node.value.left)
+#         if current_node.value.right:
+#             queue.enqueue(current_node.value.right)
+#     return False
+
+
+print(search_node(treeNode, "Hot"))
