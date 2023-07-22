@@ -46,6 +46,7 @@ class Queue:
 
 
 q = Queue()
-q.enqueue(5)
-q.enqueue(10)
-print(q)
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+print(q.dequeue())
