@@ -44,9 +44,19 @@ class Queue:
         node_to_remove.next = None
         return node_to_remove
 
+    def peek(self):
+        if self.linkedList.head is None:
+            return "The LinkedList is Empty"
+        return self.linkedList.head
+
+    def is_empty(self):
+        if self.linkedList.head is None:
+            return True
+        return False
+
 
 q = Queue()
-q.enqueue(1)
-q.enqueue(2)
-q.enqueue(3)
-print(q.dequeue())
+# q.enqueue(1)
+# q.enqueue(2)
+# q.enqueue(3)
+print(q.is_empty())
