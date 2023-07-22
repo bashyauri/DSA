@@ -8,8 +8,12 @@ class TreeNode:
 treeNode = TreeNode("Drinks")
 leftChild = TreeNode("Hot")
 rightChild = TreeNode("Cold")
+tea = TreeNode("Tea")
+coffee = TreeNode("Coffee")
 treeNode.left = leftChild  # type: ignore
 treeNode.right = rightChild  # type: ignore
+leftChild.left = tea
+leftChild.right = coffee
 
 
 def preOrderTraversal(root_node):
@@ -29,5 +33,12 @@ def inOrderTraversal(root_node):
     inOrderTraversal(root_node.right)
 
 
-preOrderTraversal(treeNode)
-inOrderTraversal(treeNode)
+def postOrderTraversal(root_node):
+    if root_node is None:
+        return
+    postOrderTraversal(root_node.left)
+    postOrderTraversal(root_node.right)
+    print(root_node.value)
+
+
+postOrderTraversal(treeNode)
