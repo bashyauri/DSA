@@ -93,4 +93,4 @@ def search_node(root_node, node):
 #     return False
 
 
-print(search_node(treeNode, "Hot"))
+print(search_node(treeNode, "Tea"))
