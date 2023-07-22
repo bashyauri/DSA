@@ -55,8 +55,8 @@ class Queue:
         return False
 
 
-q = Queue()
+# q = Queue()
 # q.enqueue(1)
 # q.enqueue(2)
 # q.enqueue(3)
-print(q.is_empty())
+# print(q.is_empty())
