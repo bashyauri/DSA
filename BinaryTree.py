@@ -1,3 +1,6 @@
+from QueueLinkedList import Queue
+
+
 class TreeNode:
     def __init__(self, value):
         self.value = value
@@ -41,4 +44,18 @@ def postOrderTraversal(root_node):
     print(root_node.value)
 
 
-postOrderTraversal(treeNode)
+def levelOrderTraversal(root_node):
+    if root_node is None:
+        return
+    q = Queue()
+    q.enqueue(root_node)
+    while q.linkedList.head:
+        root = q.dequeue()
+        print(root.value.value)
+        if root.value.left:
+            q.enqueue(root.value.left)
+        if root.value.right:
+            q.enqueue(root.value.right)
+
+
+levelOrderTraversal(treeNode)
