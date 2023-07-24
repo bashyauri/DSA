@@ -97,23 +97,52 @@ def insert_node(root_node, node):
                 return True
 
 
+def get_deepest_node(root_node):
+    if root_node is None:
+        return False
+    q = Queue()
+    q.enqueue(root_node)
+    while not q.is_empty():
+        current_node = q.dequeue()
+        if current_node.value.left:
+            q.enqueue(current_node.value.left)
+        if current_node.value.right:
+            q.enqueue(current_node.value.right)
+    deepest_node = current_node.value
+    return deepest_node
+
+
+def delete_deepest_node(root_node, deepest_node):
+    if root_node is None:
+        return False
+    q = Queue()
+    q.enqueue(root_node)
+    while not q.is_empty():
+        current_node = q.dequeue()
+
+        if current_node.value.value is deepest_node:
+            current_node.value.value = None
+            return
+
+        if current_node.value.right:
+            if current_node.value.right is deepest_node:
+                current_node.value.right = None
+                return
+            else:
+                q.enqueue(current_node.value.right)
+        if current_node.value.left:
+            if current_node.value.left is deepest_node:
+                current_node.value.left = None
+                return
+            else:
+                q.enqueue(current_node.value.left)
+
+
 # def search_node(node):
 #     queue = Queue()
 #     head_node = queue.linkedList.head
 
-#     if head_node is None:
-#         return "Empty Linked List"
-#     queue.enqueue(head_node)
-#     while not queue.is_empty():
-#         current_node = queue.dequeue()
-#         if current_node.value.value == node:
-#             return True
-#         if current_node.value.left:
-#             queue.enqueue(current_node.value.left)
-#         if current_node.value.right:
-#             queue.enqueue(current_node.value.right)
-#     return False
 
-new_node = TreeNode("Coke")
-print(insert_node(treeNode, new_node))
+deepest_node = get_deepest_node(treeNode)
+delete_deepest_node(treeNode, deepest_node)
 levelOrderTraversal(treeNode)
