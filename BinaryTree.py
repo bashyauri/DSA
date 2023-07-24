@@ -158,5 +158,11 @@ def delete_node(root_node, node):
     return False
 
 
-delete_node(treeNode, "Tea")
+def delete_binary_tree(root_node):
+    q = Queue()
+    root_node.value = None
+    root_node.left = None
+    root_node.right = None
+    return "Binary Tree Successfully deleted"
+delete_binary_tree(treeNode)
 levelOrderTraversal(treeNode)
