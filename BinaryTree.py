@@ -138,11 +138,25 @@ def delete_deepest_node(root_node, deepest_node):
                 q.enqueue(current_node.value.left)
 
 
-# def search_node(node):
-#     queue = Queue()
-#     head_node = queue.linkedList.head
+def delete_node(root_node, node):
+    if root_node is None:
+        return False
+    q = Queue()
+    q.enqueue(root_node)
+    while not q.is_empty():
+        current_node = q.dequeue()
+
+        if current_node.value.value is node:
+            deepest_node = get_deepest_node(root_node)
+            current_node.value.value = deepest_node.value
+            delete_deepest_node(root_node, deepest_node)
+            return True
+        if current_node.value.left:
+            q.enqueue(current_node.value.left)
+        if current_node.value.right:
+            q.enqueue(current_node.value.right)
+    return False
 
 
-deepest_node = get_deepest_node(treeNode)
-delete_deepest_node(treeNode, deepest_node)
+delete_node(treeNode, "Tea")
 levelOrderTraversal(treeNode)
