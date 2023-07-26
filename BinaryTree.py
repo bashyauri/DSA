@@ -53,10 +53,10 @@ def levelOrderTraversal(rootNode):
         while not (customQueue.is_empty()):
             root = customQueue.dequeue()
             print(str(root.value.value))
-            if root.value.left is not None:
+            if root.value.left:
                 customQueue.enqueue(root.value.left)
 
-            if root.value.right is not None:
+            if root.value.right:
                 customQueue.enqueue(root.value.right)
 
 
@@ -164,5 +164,7 @@ def delete_binary_tree(root_node):
     root_node.left = None
     root_node.right = None
     return "Binary Tree Successfully deleted"
+
+
 delete_binary_tree(treeNode)
 levelOrderTraversal(treeNode)
