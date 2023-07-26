@@ -51,13 +51,13 @@ def levelOrderTraversal(rootNode):
         customQueue = Queue()
         customQueue.enqueue(rootNode)
         while not (customQueue.is_empty()):
-            root = customQueue.dequeue()
+            current_node = customQueue.dequeue()
 
-            if root.value.left:
-                customQueue.enqueue(root.value.left)
+            if current_node.value.left:
+                customQueue.enqueue(current_node.value.left)
 
-            if root.value.right:
-                customQueue.enqueue(root.value.right)
+            if current_node.value.right:
+                customQueue.enqueue(current_node.value.right)
 
 
 def search_node(root_node, node):
