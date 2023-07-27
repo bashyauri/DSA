@@ -54,6 +54,10 @@ class BinaryTree:
                 self.last_used_index -= 1
                 return "The node has been successfully deleted"
 
+    def delete_binary_tree(self):
+        self.custom_list = None
+        self.last_used_index = 0
+
 
 bst = BinaryTree(8)
 print(bst.insert_node("Drinks"))
@@ -62,5 +66,12 @@ print(bst.insert_node("Cold"))
 print(bst.insert_node("Tea"))
 print(bst.insert_node("Coffe"))
 
-bst.delete_node("Tea")
+bst.delete_binary_tree()
+bst = BinaryTree(8)
+bst.levelorder_traversal(1)
+print(bst.insert_node("Drinks"))
+print(bst.insert_node("Hot"))
+print(bst.insert_node("Cold"))
+print(bst.insert_node("Tea"))
+print(bst.insert_node("Coffe"))
 bst.levelorder_traversal(1)
