@@ -17,9 +17,33 @@ class BinaryTree:
                 return "Success"
         return "Not Found"
 
+    def preorder_traversal(self, index):
+        if index > self.last_used_index:
+            return
+        print(self.custom_list[index])
+        self.preorder_traversal(index * 2)
+        self.preorder_traversal(index * 2 + 1)
+
+    def inorder_traversal(self, index):
+        if index > self.last_used_index:
+            return
+        self.inorder_traversal(index * 2)
+        print(self.custom_list[index])
+        self.inorder_traversal(index * 2 + 1)
+
+    def postorder_traversal(self, index):
+        if index > self.last_used_index:
+            return
+        self.postorder_traversal(index * 2)
+        self.postorder_traversal(index * 2 + 1)
+        print(self.custom_list[index])
+
 
 bst = BinaryTree(8)
 print(bst.insert_node("Drinks"))
 print(bst.insert_node("Hot"))
-print(bst.insert_node("Right"))
-print(bst.search_node("Tea"))
+print(bst.insert_node("Cold"))
+print(bst.insert_node("Tea"))
+print(bst.insert_node("Coffe"))
+
+bst.postorder_traversal(1)
