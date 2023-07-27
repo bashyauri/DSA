@@ -42,6 +42,18 @@ class BinaryTree:
         for i in range(index, self.last_used_index + 1):
             print(self.custom_list[i])
 
+    def delete_node(self, value):
+        if self.last_used_index == 0:
+            return "The Tree is empty"
+        deepest_node = self.custom_list[self.last_used_index]
+
+        for i in range(1, self.last_used_index + 1):
+            if self.custom_list[i] == value:
+                self.custom_list[i] = deepest_node
+                deepest_node = None
+                self.last_used_index -= 1
+                return "The node has been successfully deleted"
+
 
 bst = BinaryTree(8)
 print(bst.insert_node("Drinks"))
@@ -50,4 +62,5 @@ print(bst.insert_node("Cold"))
 print(bst.insert_node("Tea"))
 print(bst.insert_node("Coffe"))
 
+bst.delete_node("Tea")
 bst.levelorder_traversal(1)
