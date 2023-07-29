@@ -5,7 +5,7 @@ class Queue:
 
     def __str__(self):
         value = [str(x) for x in self.items]
-        return ' '.join(value)
+        return " ".join(value)
 
     def isEmpty(self):
         if self.items == []:
