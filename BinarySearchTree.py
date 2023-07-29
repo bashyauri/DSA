@@ -72,6 +72,32 @@ class BST:
         elif value > current_node.value:
             return self.search_node(current_node.right, value)
 
+    def get_min(self, root_node):
+        current_node = root_node
+        while current_node.left:
+            current_node = current_node.left
+        return current_node
+
+    def delete_node(self, root_node, value):
+        if root_node is None:
+            return root_node
+        current_node = root_node
+        if value < current_node.value:
+            current_node.left = self.delete_node(current_node.left, value)
+        elif value > current_node.value:
+            current_node.right = self.delete_node(current_node.right, value)
+        else:
+            if current_node.left is None:
+                return current_node.right
+            elif current_node.right is None:
+                return current_node.left
+            deepest_node = self.get_min(current_node.right)
+            current_node.value = deepest_node.value
+            current_node.right = self.delete_node(
+                current_node.right, deepest_node.value
+            )
+        return current_node
+
 
 new_bst = BST(None)
 print(new_bst.insert(new_bst, 70))
@@ -83,4 +109,5 @@ print(new_bst.insert(new_bst, 80))
 print(new_bst.insert(new_bst, 100))
 print(new_bst.insert(new_bst, 20))
 print(new_bst.insert(new_bst, 40))
-print(new_bst.search_node(new_bst, 5))
+new_bst.delete_node(new_bst, 50)
+new_bst.inorder_traversal(new_bst)
