@@ -98,6 +98,12 @@ class BST:
             )
         return current_node
 
+    def delete(self, root_node):
+        root_node.value = None
+        root_node.right = None
+        root_node.left = None
+        return True
+
 
 new_bst = BST(None)
 print(new_bst.insert(new_bst, 70))

@@ -1,1 +1,1 @@
-30
+print(new_bst.get_min(new_bst))
